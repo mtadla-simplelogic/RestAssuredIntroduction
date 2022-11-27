@@ -10,7 +10,7 @@ public class GetAllUsers extends TestBase {
     private String users = "/users";
 
     @Test
-    public void shouldGetAllPosts() {
+    public void shouldGetAllUsers() {
         when()
                 .get(baseUrl + users).
                 then()
@@ -18,7 +18,7 @@ public class GetAllUsers extends TestBase {
     }
 
     @Test
-    public void shouldGetFirstPost() {
+    public void shouldGetFirstUser() {
         when()
                 .get(baseUrl + users + "/1").
                 then()
@@ -26,7 +26,7 @@ public class GetAllUsers extends TestBase {
     }
 
     @Test
-    public void shouldGetFirstPostAndValidateJson() {
+    public void shouldGetFirstUserAndValidateJson() {
         Response response =
                 when()
                         .get(baseUrl + users + "/1").
@@ -38,5 +38,15 @@ public class GetAllUsers extends TestBase {
         JsonPath jsonPath = response.jsonPath();
 
         Assert.assertEquals(jsonPath.get("address.geo.lat"), "-37.3159");
+    }
+
+    @Test
+    public void shouldGetFirstUserWithPathVariable(){
+        given()
+                .pathParam("userId", "1").
+                when()
+                .get(baseUrl + users + "/{userId}").
+                then()
+                .statusCode(200);
     }
 }

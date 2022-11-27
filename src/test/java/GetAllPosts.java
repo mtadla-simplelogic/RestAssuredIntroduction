@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
+import static org.testng.Assert.*;
 
 public class GetAllPosts extends TestBase {
     private String posts = "/posts";
@@ -37,7 +38,7 @@ public class GetAllPosts extends TestBase {
 
         JsonPath jsonPath = response.jsonPath();
 
-        Assert.assertEquals(jsonPath.get("title"), "sunt aut facere repellat provident occaecati excepturi optio reprehenderit");
+        assertEquals(jsonPath.get("title"), "sunt aut facere repellat provident occaecati excepturi optio reprehenderit");
     }
 
     @Test
