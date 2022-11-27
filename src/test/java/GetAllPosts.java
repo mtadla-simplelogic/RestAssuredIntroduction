@@ -3,43 +3,34 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
 
-public class GetAllPosts {
+public class GetAllPosts extends TestBase {
+    private String posts = "/posts";
 
     @Test
     public void shouldGetAllPosts() {
         when()
-                .get("https://jsonplaceholder.typicode.com/posts").
+                .get(baseUrl + posts).
                 then()
-                .statusCode(200)
-                .log()
-                .all();
+                .statusCode(200);
     }
 
     @Test
     public void shouldGetFirstPost() {
         when()
-                .get("https://jsonplaceholder.typicode.com/posts/1").
+                .get(baseUrl + posts + "/1").
                 then()
-                .statusCode(200)
-                .log()
-                .all();
+                .statusCode(200);
     }
 
     @Test
     public void shouldGetFirstPostAndValidateJson() {
         Response response =
-                given().
-                        log().
-                        all().
                 when()
-                        .get("https://jsonplaceholder.typicode.com/posts/1").
-                then()
+                        .get(baseUrl + posts + "/1").
+                        then()
                         .statusCode(200)
-                        .log()
-                        .all()
                         .extract()
                         .response();
 
