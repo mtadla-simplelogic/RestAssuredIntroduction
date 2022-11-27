@@ -6,40 +6,32 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
 
-public class GetAllUsers {
+public class GetAllUsers extends TestBase {
+    private String users = "/users";
 
     @Test
     public void shouldGetAllPosts() {
         when()
-                .get("https://jsonplaceholder.typicode.com/users").
+                .get(baseUrl + users).
                 then()
-                .statusCode(200)
-                .log()
-                .all();
+                .statusCode(200);
     }
 
     @Test
     public void shouldGetFirstPost() {
         when()
-                .get("https://jsonplaceholder.typicode.com/users/1").
+                .get(baseUrl + users + "/1").
                 then()
-                .statusCode(200)
-                .log()
-                .all();
+                .statusCode(200);
     }
 
     @Test
     public void shouldGetFirstPostAndValidateJson() {
         Response response =
-                given().
-                        log().
-                        all().
                 when()
-                        .get("https://jsonplaceholder.typicode.com/users/1").
+                        .get(baseUrl + users + "/1").
                 then()
                         .statusCode(200)
-                        .log()
-                        .all()
                         .extract()
                         .response();
 
