@@ -40,7 +40,8 @@ public class GetAllPosts {
                         .statusCode(200)
                         .log()
                         .all()
-                        .extract().response();
+                        .extract()
+                        .response();
 
         JsonPath jsonPath = response.jsonPath();
 
