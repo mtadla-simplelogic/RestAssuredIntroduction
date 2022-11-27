@@ -49,4 +49,19 @@ public class GetAllUsers extends TestBase {
                 then()
                 .statusCode(200);
     }
+
+    @Test
+    public void shouldGetUserFromGwenborough(){
+        Response response =
+                given()
+                        .queryParam("address.city", "Gwenborough").
+                when()
+                        .get(baseUrl + users).
+                then()
+                        .statusCode(200)
+                        .extract().response();
+
+        JsonPath jsonPath = response.jsonPath();
+        Assert.assertEquals(jsonPath.get("[0].id").toString(), "1");
+    }
 }
