@@ -1,15 +1,14 @@
-import io.restassured.RestAssured;
 import org.testng.annotations.Test;
 
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.when;
 
 public class GetAllPosts {
 
     @Test
-    public void shouldGetAllPosts(){
+    public void shouldGetAllPosts() {
         when()
-                .get("https://jsonplaceholder.typicode.com/posts")
-                .then()
+                .get("https://jsonplaceholder.typicode.com/posts").
+        then()
                 .statusCode(200);
     }
 }
