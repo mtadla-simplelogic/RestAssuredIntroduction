@@ -45,9 +45,24 @@ public class GetAllPosts extends TestBase {
     public void shouldGetFirstPostWithPathVariable(){
         given()
                 .pathParam("postId", "1").
-        when()
+                when()
                 .get(baseUrl + posts + "/{postId}").
-        then()
+                then()
                 .statusCode(200);
+    }
+    @Test
+    public void shouldGetPostsWithForUserWithId4(){
+        Response response =
+                given()
+                        .queryParam("userId", "4")
+                        .queryParam("title", "provident vel ut sit ratione est").
+                when()
+                        .get(baseUrl + posts).
+                then()
+                        .statusCode(200)
+                        .extract().response();
+
+        JsonPath jsonPath = response.jsonPath();
+        Assert.assertEquals(jsonPath.get("[0].id").toString(), "37");
     }
 }
