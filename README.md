@@ -10,7 +10,7 @@ Testy API do napisania:
  - sprawdz czy status to 200
 
 2. Pobierz 'todo' o id 4
- - sprawdz czy status to 200
+    - sprawdz czy status to 200
  - sprawdz asercją cczy reponsponse zawiera id=1
 
 
