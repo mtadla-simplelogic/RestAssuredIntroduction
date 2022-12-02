@@ -1,4 +1,4 @@
-# RestAssuredIntroduction
+# Ćwiczenia do wykonania w Postmanie i RestAssured
 
 Ćwiczenia dla 
 https://jsonplaceholder.typicode.com/todos
