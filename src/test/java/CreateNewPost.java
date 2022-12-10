@@ -1,4 +1,3 @@
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
 
@@ -8,9 +7,9 @@ public class CreateNewPost extends TestBase {
     private String posts = "/posts";
 
     String body = "{\n" +
-            "    \"userId\": 1,\n" +
-            "    \"title\": \"some title\",\n" +
-            "    \"body\": \"lorem ipsum\"\n" +
+            "    \"userId\": 123123123,\n" +
+            "    \"title\": \"etasdasdum autem\",\n" +
+            "    \"body\": \"delectu123n eum modi\"\n" +
             "}";
 
     @Test
