@@ -9,7 +9,8 @@ public class UpdateUser extends TestBase {
 
     @Test
     public void shouldUpdateUser() {
-        // 3 asercje z użyciem JSONPath
+        // metoda Put do /users/{id}
+        // 3 asercje z użyciem JSONPath  na otrzymanym response
     }
 
     // tutaj okrojone body usera
@@ -17,6 +18,7 @@ public class UpdateUser extends TestBase {
 
     @Test
     public void shouldUpdateUserWithLimitedBody() {
-        // 3 asercje z użyciem JSONPath
+        // metoda Put do /users/{id}
+        // 3 asercje z użyciem JSONPath  na otrzymanym response
     }
 }
