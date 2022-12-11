@@ -8,6 +8,9 @@ import models.Post;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
 
@@ -43,10 +46,14 @@ public class PassingJsonaAnObject  extends TestBase {
 
     @Test
     public void shouldUpdatePatchWithLimitedBody(){
+        Map<String, Object> post = new HashMap<>();
+        post.put("title", "this is some new title");
+        post.put("body", "text text");
+
         Response response =
                 given()
                         .pathParam("postId", "3")
-                        .body(partOfBody)
+                        .body(post)
                         .contentType(ContentType.JSON).
                         when()
                         .patch(baseUrl + posts + "/{postId}").
@@ -58,8 +65,8 @@ public class PassingJsonaAnObject  extends TestBase {
 
         Assert.assertEquals(jsonPath.get("id").toString(), "3");
         Assert.assertEquals(jsonPath.get("userId").toString(), "1");
-        Assert.assertEquals(jsonPath.get("title"), "ea molestias quasi exercitationem repellat qui ipsa sit aut");
-        Assert.assertEquals(jsonPath.get("body"), "some new body");
+        Assert.assertEquals(jsonPath.get("title"), "this is some new title");
+        Assert.assertEquals(jsonPath.get("body"), "text text");
     }
 
 }
