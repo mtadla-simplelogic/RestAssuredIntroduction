@@ -1,3 +1,6 @@
+package post;
+
+import base.TestBase;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
 

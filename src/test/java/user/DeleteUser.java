@@ -1,3 +1,6 @@
+package user;
+
+import base.TestBase;
 import org.testng.annotations.Test;
 
 public class DeleteUser extends TestBase {

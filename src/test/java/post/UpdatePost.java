@@ -1,3 +1,6 @@
+package post;
+
+import base.TestBase;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -6,7 +9,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class UpdatePost extends TestBase{
+public class UpdatePost extends TestBase {
     private String posts = "/posts";
     String fullBody = "{\n" +
             "    \"userId\": 123123123,\n" +

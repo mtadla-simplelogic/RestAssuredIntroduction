@@ -1,7 +1,9 @@
+package post;
+
+import base.TestBase;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.when;
 
 public class DetelePost extends TestBase {
     private String posts = "/posts";

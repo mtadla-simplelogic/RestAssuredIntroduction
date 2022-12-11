@@ -1,3 +1,6 @@
+package user;
+
+import base.TestBase;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -6,10 +9,9 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class PatchUser extends TestBase {
+public class UpdateUser extends TestBase {
     private String users = "/users";
 
-    // tutaj pełne body usera
     String fullBody = "{\n" +
             "    \"name\": \"mat\",\n" +
             "    \"username\": \"mat1\",\n" +
@@ -35,14 +37,14 @@ public class PatchUser extends TestBase {
 
 
     @Test
-    public void shouldPatchUser() {
+    public void shouldUpdateUser() {
         Response response =
                 given()
                         .pathParam("userId", "1")
                         .body(fullBody)
                         .contentType(ContentType.JSON).
                 when()
-                        .patch(baseUrl + users + "/{userId}").
+                        .put(baseUrl + users + "/{userId}").
                 then()
                         .statusCode(200)
                         .extract().response();
@@ -54,20 +56,20 @@ public class PatchUser extends TestBase {
         Assert.assertEquals(jsonPath.get("email"), "Sincere@april.biz");
     }
 
+    // tutaj okrojone body usera
     String partOfBody = "{\n" +
             "    \"name\": \"mat\"\n" +
             "}";
 
-
     @Test
-    public void shouldPatchUserWithLimitedBody() {
+    public void shouldUpdateUserWithLimitedBody() {
         Response response =
                 given()
                         .pathParam("userId", "1")
                         .body(partOfBody)
                         .contentType(ContentType.JSON).
                 when()
-                        .patch(baseUrl + users + "/{userId}").
+                        .put(baseUrl + users + "/{userId}").
                 then()
                         .statusCode(200)
                         .extract().response();
@@ -76,6 +78,6 @@ public class PatchUser extends TestBase {
 
         Assert.assertEquals(jsonPath.get("id").toString(), "1");
         Assert.assertEquals(jsonPath.get("name"), "mat");
-        Assert.assertEquals(jsonPath.get("email"), "Sincere@april.biz");
+        Assert.assertNull(jsonPath.get("email"));
     }
 }
