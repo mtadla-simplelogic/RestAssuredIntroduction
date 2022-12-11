@@ -1,29 +1,40 @@
 package post.advanced;
 
 import base.TestBase;
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
+import io.restassured.http.ContentType;
+import models.Post;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
-import static org.testng.Assert.assertEquals;
 
 public class PassingJsonaAnObject  extends TestBase {
 
     @Test
     public void shouldGetFirstPostAndValidateJson() {
-        Response response =
+        Post post =
                 when()
                         .get(baseUrl + posts + "/1").
                 then()
                         .statusCode(200)
                         .extract()
                         .response()
-                        ;
+                        .as(Post.class);
 
-        JsonPath jsonPath = response.jsonPath();
+        Assert.assertEquals(post.getTitle(), "sunt aut facere repellat provident occaecati excepturi optio reprehenderit");
+        Assert.assertEquals(post.getId(), 1);
+    }
 
-        assertEquals(jsonPath.get("title"), "sunt aut facere repellat provident occaecati excepturi optio reprehenderit");
+    @Test
+    public void shouldCreateNewPost() {
+        given()
+                .body(body)
+                .contentType(ContentType.JSON).
+        when()
+                .post(baseUrl + posts).
+                then()
+                .statusCode(201);
     }
 
 }
