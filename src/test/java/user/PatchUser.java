@@ -10,8 +10,6 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 
 public class PatchUser extends TestBase {
-    private String users = "/users";
-
     // tutaj pełne body usera
     String fullBody = "{\n" +
             "    \"name\": \"mat\",\n" +

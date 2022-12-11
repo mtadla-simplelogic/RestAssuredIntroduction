@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 
 public class CreateNewUser extends TestBase {
-    private String users = "/users";
 
     String body = "{\n" +
             "    \"name\": \"Mateusz Tadla\",\n" +

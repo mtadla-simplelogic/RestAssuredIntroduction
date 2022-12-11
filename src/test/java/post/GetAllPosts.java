@@ -11,7 +11,6 @@ import static io.restassured.RestAssured.when;
 import static org.testng.Assert.*;
 
 public class GetAllPosts extends TestBase {
-    private String posts = "/posts";
 
     @Test
     public void shouldGetAllPosts() {

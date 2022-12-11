@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 
 public class DetelePost extends TestBase {
-    private String posts = "/posts";
 
     @Test
     public void shouldDeletePost() {

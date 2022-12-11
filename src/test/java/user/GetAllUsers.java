@@ -10,8 +10,6 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
 
 public class GetAllUsers extends TestBase {
-    private String users = "/users";
-
     @Test
     public void shouldGetAllUsers() {
         when()

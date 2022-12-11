@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 
 public class UpdatePost extends TestBase {
-    private String posts = "/posts";
     String fullBody = "{\n" +
             "    \"userId\": 123123123,\n" +
             "    \"title\": \"new title\",\n" +

@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.*;
 
 public class CreateNewPost extends TestBase {
-    private String posts = "/posts";
 
     String body = "{\n" +
             "    \"userId\": 123123123,\n" +
