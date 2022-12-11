@@ -2,12 +2,14 @@ package post.advanced;
 
 import base.TestBase;
 import io.restassured.http.ContentType;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import models.Post;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,6 +35,7 @@ public class PassingJsonaAnObject  extends TestBase {
 
     @Test
     public void shouldCreateNewPost() {
+        // https://www.liquid-technologies.com/online-json-to-schema-converter
         Post post = new Post(4,"some title", "some text");
 
         given()
@@ -41,7 +44,8 @@ public class PassingJsonaAnObject  extends TestBase {
         when()
                 .post(baseUrl + posts).
         then()
-                .statusCode(201);
+                .statusCode(201)
+                .body(JsonSchemaValidator.matchesJsonSchema(new File("src/test/java/schemas/postSchema.json")));
     }
 
     @Test
