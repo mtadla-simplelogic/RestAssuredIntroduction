@@ -15,10 +15,11 @@ public class PassingJsonaAnObject  extends TestBase {
         Response response =
                 when()
                         .get(baseUrl + posts + "/1").
-                        then()
+                then()
                         .statusCode(200)
                         .extract()
-                        .response();
+                        .response()
+                        ;
 
         JsonPath jsonPath = response.jsonPath();
 
